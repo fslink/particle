@@ -1,0 +1,13 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.7.5",
+    "angular-resource": "^1.7.5",
+    "angular-route": "^1.7.5",
+    "bootstrap": "^4.1.3"
+  }
+}
