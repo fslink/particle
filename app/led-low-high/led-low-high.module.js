@@ -2,5 +2,5 @@
 
 angular.module('ledLowHigh', [
 	'ngRoute',
-	'core.led'
+	'core.api.particle'
 	]);

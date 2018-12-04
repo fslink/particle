@@ -4,7 +4,7 @@ angular.
 	module('ledLowHigh').
 		component('ledLowHigh', {
 			templateUrl:'led-low-high/led.template.html',
-			controller: ['Led', function LedLowHighController(Led){
+			controller: ['Device', function LedLowHighController(Device){
 				var self = this;
 				this.response = "no request";
 				this.status = "off";
@@ -12,7 +12,7 @@ angular.
 					if(on_off == "on"){
 						self.response = "Processing...";
 						self.status = "on";
-						Led.query({led: 'on'}, function(data){
+						Device.remoteLed({led: 'on'}, function(data){
 							self.response = data;
 						}, function(err){
 							self.response = err;
@@ -20,7 +20,7 @@ angular.
 					} else {
 						self.response = "Processing...";
 						self.status = "off";
-						Led.query({led : "off"}, function(data){
+						Device.remoteLed({led : "off"}, function(data){
 							self.response = data;
 						}, function(err){
 							self.response = err;

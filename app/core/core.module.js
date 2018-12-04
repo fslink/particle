@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('core', ['core.led']);
+angular.module('core', ['core.api.particle']);
