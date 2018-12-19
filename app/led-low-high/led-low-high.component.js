@@ -12,7 +12,7 @@ angular.
 					if(on_off == "on"){
 						self.response = "Processing...";
 						self.status = "on";
-						Device.remoteLed({led: 'on'}, function(data){
+						Device.led.onOff({led: 'on'}, function(data){
 							self.response = data;
 						}, function(err){
 							self.response = err;
@@ -20,7 +20,7 @@ angular.
 					} else {
 						self.response = "Processing...";
 						self.status = "off";
-						Device.remoteLed({led : "off"}, function(data){
+						Device.led.onOff({led : "off"}, function(data){
 							self.response = data;
 						}, function(err){
 							self.response = err;

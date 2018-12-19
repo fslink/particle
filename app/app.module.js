@@ -2,5 +2,7 @@
 
 angular.module('particle', [
 	'ngRoute',
-	'ledLowHigh'
+	'ledLowHigh',
+	'dashboard',
+	'devicesList'
 	]);

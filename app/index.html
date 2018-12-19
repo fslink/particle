@@ -17,17 +17,32 @@
     <script src="core/core.module.js"></script>
     <script src="core/core.api.particle/core.api.particle.module.js"></script>
     <script src="core/core.api.particle/core.api.particle.service.js"></script>
-    <script src=""></script>
+    <script src="dashboard/dashboard.module.js"></script>
+    <script src="dashboard/dashboard.component.js"></script>
+    <script src="devices-list/devices-list.module.js"></script>
+    <script src="devices-list/devices-list.component.js"></script>
   </head>
   <body>
 
-  <nav class="navbar navbar-dark bg-primary">
-    <a class="navbar-brand" href="#">Particle</a>
-    <ul class="navbar-nav mr-auto">
+ <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+  <a class="navbar-brand" href="#" style="color: white;">Particle</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Led<span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="#!/" style="color: white;">Home <span class="sr-only"></span></a>
       </li>
-  </nav>
+      <li class="nav-item">
+        <a class="nav-link" href="#!/led-low-high" style="color: white;">Led</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#!/devices" style="color: white;">Devices</a>
+      </li>
+    </ul>
+  </div>
+</nav>
 
   <div ng-view></ng-view>
 

@@ -3,13 +3,56 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+var mongoose = require('mongoose');
 var Particle = require('particle-api-js');
+var port = 8000;
 
-
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
+var Device = require('./model/Device.js');
+mongoose.connect('mongodb://localhost/particle');
 
 var app = express();
+var particle = new Particle();
+
+var token;
+particle.login({username: 'mowglysofiann@hotmail.com', password: 'azerty57'}).then(
+  function(data) {
+    token = data.body.access_token;
+    var devicesPr = particle.listDevices({ auth: token });
+
+    devicesPr.then(
+	  function(devices){
+	    devices.body.forEach(function(device){
+	    	console.log(device.id)
+	    	Device.find({id: device.id}, function(err, mongoDevice){
+	    		console.log(mongoDevice)
+	    		if(err) {
+	    			handleError(err);
+
+	    		} else if (mongoDevice.length > 0) {
+	    			console.log('mongo: ' + mongoDevice);
+
+	    		} else {
+	    			Device.create(device, function(err){
+	    				if(err) handleError(err);
+	    				console.log('device saved');
+	    			});
+	    		} 
+	    	});
+	    });
+	    
+	  },
+	  function(err) {
+	    console.log('List devices call failed: ', err);
+	  }
+	);
+    console.log('data : ' + token);
+    return token;
+  },
+  function (err) {
+  	console.log('error : ' + err);
+  	return err;
+  }
+);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -20,13 +63,12 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+
+//Client
 app.use('/', express.static(path.join(__dirname, 'app')))
 
-app.use('/particle', require(path.join(__dirname, '/routes/particle.js')))
-
-app.use('/', function(req, res){
-	res.sendFile(path.join('app', 'index.html'))
-});
+// API Routes
+app.use('/api/devices', require('./routes/devices'))
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -44,16 +86,9 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-app.listen(8000, function(){
-	console.log('Server lauched in 8000 port')
-
+app.listen(port, function(){
+	console.log('Server lauched in ' + port)
 })
 
 module.exports = app;
 
-/* step
--mongodb
--connect
--update devices
--start the event listening
-*/
