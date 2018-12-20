@@ -1,0 +1,27 @@
+<div class="container" style="display: flex; margin-top: 10px;">
+	<div class="row">
+		<div class="col-sm" style="margin-bottom: 20px;">
+		  	<h2>{{$ctrl.device.name}}</h2>
+		  	<img ng-src="../assets/img/logo_particle.png" style="max-height:50px" alt="particleLogo">
+	  	</div>
+	  	<div class="col-sm">
+		  <ul>
+		  	<style>
+		  		span{
+		  			font-weight: bold;
+		  		}
+		  	</style>
+		    <li><span>ID : </span>{{$ctrl.device.id}}</li>
+		    <li><span>Nom : </span>{{$ctrl.device.name}}</li>
+		    <li><span>Dernière adresse IP : </span>{{$ctrl.device.last_ip_address}}</li>
+		    <li><span>Numéro de série : </span>{{$ctrl.device.serial_number}}</li>
+		    <li><span>Version courrante : </span>{{$ctrl.device.current_build_target}}</li>
+		    <li><span>Dernière écoute : </span>{{$ctrl.device.last_heard}}</li>
+		    <li><span>Cellulaire : </span>{{$ctrl.device.last_heard}}</li>
+		  </ul>
+	  </div>
+	  <div class="col-sm">
+	  	<a href="#!/devices">Retour</a>
+	  </div>
+	</div>
+</div>

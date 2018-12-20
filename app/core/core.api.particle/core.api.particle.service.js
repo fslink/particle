@@ -16,7 +16,13 @@ angular.
 						method: 'GET',
 						isArray: true
 					}
-				})
+				}),
+				device: $resource('http://localhost:8000/api/devices/:deviceId', {}, {
+					findById: {
+						method: 'GET',
+						params: {deviceId : ''}
+					}
+				}),
 			};
 		}]);
 	

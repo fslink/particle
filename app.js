@@ -22,18 +22,16 @@ particle.login({username: 'mowglysofiann@hotmail.com', password: 'azerty57'}).th
     devicesPr.then(
 	  function(devices){
 	    devices.body.forEach(function(device){
-	    	console.log(device.id)
 	    	Device.find({id: device.id}, function(err, mongoDevice){
-	    		console.log(mongoDevice)
 	    		if(err) {
-	    			handleError(err);
+	    			console.error(err);
 
 	    		} else if (mongoDevice.length > 0) {
-	    			console.log('mongo: ' + mongoDevice);
+	    			console.log('devices here');
 
 	    		} else {
 	    			Device.create(device, function(err){
-	    				if(err) handleError(err);
+	    				if(err) console.error(err);
 	    				console.log('device saved');
 	    			});
 	    		} 

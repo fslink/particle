@@ -4,5 +4,6 @@ angular.module('particle', [
 	'ngRoute',
 	'ledLowHigh',
 	'dashboard',
-	'devicesList'
+	'devicesList',
+	'deviceDetail'
 	]);

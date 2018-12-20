@@ -1,22 +1,20 @@
 <div class="container" style="display: flex; margin-top: 10px;">
-  <table class="table">
-    <thead>
-    <tr>
-      <th scope="col">ID</th>
-      <th scope="col">Name</th>
-      <th scope="col">Last_ip_address</th>
-      <th scope="col">Serial Number</th>
-      <th scope="col">Voir</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr ng-repeat="device in $ctrl.devices">
-      <td>{{device.id}}</td>
-      <td>{{device.name}}</td>
-      <td>{{device.last_ip_address}}</td>
-      <td>{{device.serial_number}}</td>
-      <td><a href="#!/devices/{{device._id}}">>></a></td>
-    </tr>
-  </tbody>
-  </table>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Voir</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="device in $ctrl.devices">
+        <td>{{device.id}}</td>
+        <td>{{device.name}}</td>
+        <td><a href="#!/devices/{{device._id}}">>></a></td>
+      </tr>
+    </tbody>
+    </table>
+  </div>
 </div>

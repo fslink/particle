@@ -14,6 +14,18 @@ router.get('/', function(req, res, next) {
 			res.json(devices);
 		}
 	});
-});
+})
+
+.get('/:deviceId', function(req, res, next){
+	Device.findById({_id: req.params.deviceId}, function(err, device){
+		if(err) {
+			console.error(err);
+			res.sendStatus(500);
+
+		} else {
+			res.json(device);
+		}
+	});
+})
 
 module.exports = router;

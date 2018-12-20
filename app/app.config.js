@@ -14,6 +14,9 @@ angular.
 					when('/devices', {
 						template: '<devices-list></devices-list>'
 					}).
+					when('/devices/:deviceId', {
+						template: '<device-detail></device-detail>'
+					}).
 					otherwise('/');
 			}
 		]);
